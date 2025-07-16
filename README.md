@@ -1,2 +1,4 @@
-# employee-management-app
-従業員管理アプリケーション
+2025/7/16: ディレクトリ構成整備
+2025/7/16: エンティティ, DTO設計/確認
+2025/7/16: AuthService.cs（ログインAPIの認証処理機能）実装/内容確認
+2025/7/16: JwtTokenGenerator.cs(JWT生成機能)実装/内容理解
