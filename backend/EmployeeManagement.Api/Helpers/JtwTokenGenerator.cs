@@ -6,7 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 public class JwtTokenGenerator
 {
     // 定数SecreKey宣言
-    private const string SecretKey = "supersecretkey_supersecretkey";
+    private const string SecretKey = "supersecretkey_supersecretkey53418762346287468725";
 
     // ログイン成功時に呼び出されるGenerateTokenメソッド
     public static string GenerateToken(User user)
@@ -14,8 +14,8 @@ public class JwtTokenGenerator
         // トークンに埋め込むユーザー情報(UserId, Role)を配列に格納
         var claims = new[]
         {
-            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new Claim(ClaimTypes.Role, user.Role.ToString())
+            new Claim("userId", user.Id.ToString()),
+            new Claim("role", user.Role.ToString())
         };
 
         // SecretKeyをbyte配列に変換
