@@ -13,13 +13,23 @@ namespace Backend.Services
         public AuthService()
         {
             _users = new List<User>
-        {
-            new User {
-                Id = 1,
-                Email = "test@examle.com",
-                PasswordHash = Hash("password123"),
-                Role = UserRole.Admin}
-            };
+            {
+                new User
+                {
+                    Id = 1,
+                    Email = "test@examle.com",
+                    PasswordHash = Hash("password123"),
+                    Role = UserRole.Admin
+                },
+
+                new User
+                {
+                    Id = 2,
+                    Email = "test_general@examle.com",
+                    PasswordHash = Hash("password456"),
+                    Role = UserRole.General
+                }
+             };
         }
 
         // ˆø”emil, password‚ª_users—v‘f‚ÌId, PasswordHash‚Æˆê’v‚·‚éê‡A‚»‚ÌUser‚ğ•Ô‚·(‚·‚×‚Ä•sˆê’v‚Ìê‡null‚ğ•Ô‚·)

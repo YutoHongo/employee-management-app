@@ -21,8 +21,7 @@ builder.Services.AddAuthentication(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
     {
-        RoleClaimType = "role",
-        NameClaimType = "userId",
+        RoleClaimType = "Roles",
 
         ValidateIssuer = true,
         ValidateAudience = true,
@@ -34,6 +33,8 @@ builder.Services.AddAuthentication(options =>
             Encoding.UTF8.GetBytes("supersecretkey_supersecretkey53418762346287468725"))
     };
 });
+
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 

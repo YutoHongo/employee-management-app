@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Backend.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -6,6 +5,7 @@ using Backend.Enums;
 
 [ApiController]
 [Route("api/[controller]")]
+// Admin権限でのみで承認
 [Authorize(Roles = "Admin")]
 
 public class UsersController : ControllerBase
@@ -51,6 +51,7 @@ public class UsersController : ControllerBase
         }
     };
 
+    // Employyee情報全容出力
     [HttpGet]
     public IActionResult GetAllUsers()
     {
