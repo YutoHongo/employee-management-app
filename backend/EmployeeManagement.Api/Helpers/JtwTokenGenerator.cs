@@ -14,9 +14,8 @@ public class JwtTokenGenerator
         // トークンに埋め込むユーザー情報(UserId, Role)を配列に格納
         var claims = new[]
         {
-            // アプリ内ロジックで使いやすくするためのカスタムクレーム（オプション）
             new Claim("userId", user.Id.ToString()),
-            new Claim("Roles", user.Role.ToString())
+            new Claim("role", user.Role.ToString())
         };
 
         // SecretKeyをbyte配列に変換

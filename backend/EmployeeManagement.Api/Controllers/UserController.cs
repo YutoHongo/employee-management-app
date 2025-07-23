@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace Backend.Controllers
 {
@@ -18,7 +17,7 @@ namespace Backend.Controllers
         public IActionResult GetProfile()
         {
             var userId = User.FindFirst("userId")?.Value;
-            var role = User.FindFirst("Roles")?.Value;
+            var role = User.FindFirst("role")?.Value;
 
             return Ok(new
             {
