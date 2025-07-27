@@ -15,7 +15,7 @@ public class JwtTokenGenerator
         var claims = new[]
         {
             new Claim("userId", user.Id.ToString()),
-            new Claim("role", user.Role.ToString())
+            new Claim("Roles", user.Role.ToString())
         };
 
         // SecretKey‚ðbyte”z—ñ‚É•ÏŠ·

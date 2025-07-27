@@ -7,7 +7,7 @@ namespace Backend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class EmployeesController : ControllerBase
+    public class GeneralController : ControllerBase
     {
         // DB作成までダミーデータ使用
         private static List<Employee> _employees = new()
@@ -22,7 +22,6 @@ namespace Backend.Controllers
                 JoinDate = new DateTime(2020, 6, 1),
                 VacationRemaining = 5,
                 CurrentWorkplace = "workplace1",
-                Status = Status.Active
             },
 
             new Employee
@@ -35,7 +34,6 @@ namespace Backend.Controllers
                 JoinDate = new DateTime(2021, 7, 1),
                 VacationRemaining = 10,
                 CurrentWorkplace = "workplace2",
-                Status = Status.Active
             },
 
             new Employee
@@ -48,25 +46,29 @@ namespace Backend.Controllers
                 JoinDate = new DateTime(2020, 6, 1),
                 VacationRemaining = 15,
                 CurrentWorkplace = "workplace3",
-                Status = Status.Retired
             }
         };
 
-        // api/employee
+        // api/employees
         [HttpGet]
+
+        // 従業員権限でのみ承認
         [Authorize(Roles = "General")]
         public ActionResult<Employee> GetMyEmployeeInfo()
         {
             var userIdClaim = User.FindFirst("userId")?.Value;
 
+            // userIdClaimがnullの場合またはint型に変換出来ない場合にUnauthorizedを返す
             if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
                 return Unauthorized("ユーザーIDが無効です");
 
             var employee = _employees.FirstOrDefault(e => e.Id == userId);
 
+            // _employeesリスト内のIdにe.Idと同一要素が無い場合NotFoundを返す
             if (employee == null)
                 return NotFound("該当する従業員情報が見つかりません");
 
+            // _employeesリスト内のIdにe.Idと同一要素のみを(現在ログインしているユーザー情報)出力
             return Ok(employee);
         }
     }

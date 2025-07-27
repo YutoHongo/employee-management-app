@@ -17,7 +17,7 @@ namespace Backend.Controllers
         public IActionResult GetProfile()
         {
             var userId = User.FindFirst("userId")?.Value;
-            var role = User.FindFirst("role")?.Value;
+            var role = User.FindFirst("Roles")?.Value;
 
             return Ok(new
             {

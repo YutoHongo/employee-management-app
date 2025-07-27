@@ -21,8 +21,7 @@ builder.Services.AddAuthentication(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
     {
-        RoleClaimType = "role",
-        NameClaimType = "userId",
+        RoleClaimType = "Roles",
 
         ValidateIssuer = true,
         ValidateAudience = true,
@@ -36,7 +35,7 @@ builder.Services.AddAuthentication(options =>
 });
 
 var app = builder.Build();
-
+    
 // ミドルウェア設定
 app.UseHttpsRedirection();
 

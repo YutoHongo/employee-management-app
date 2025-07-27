@@ -1,9 +1,9 @@
-using System.Text.Json.Serialization;
 using Backend.Enums;
+using System.Text.Json.Serialization;
 
-namespace Backend.Models
+namespace Backend.DTOs
 {
-    public class Employee
+    public class EditEmployeeRequest
     {
         public int Id { get; set; }
 
@@ -21,14 +21,5 @@ namespace Backend.Models
         public int VacationRemaining { get; set; }
 
         public string CurrentWorkplace { get; set; }
-
-
-        public string Email { get; set; }
-
-        public string PasswordHash { get; set; }
-
-        // public int? UserId { get; set; }
-
-        // public User User { get; set; }
     }
 }
